@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: left;
+    font-family: 'Catamaran', sans-serif;
+    background-color: #ffeccc;
+}
+
+header {
+    background-color: #333333;
+    color: #d9d0b8;
+}
+
+header, foooter {
+    padding: 20px;
+    text-align: left;
+    font-family: 'Catamaran', sans-serif;
+}
+
+footer {
+    font-family: 'Catamaran', sans-serif;
+    color: #403d36;
+}
+
+ /* unvisited link */
+a:link {
+  color: #4f452b;
+}
+
+/* visited link */
+a:visited {
+  color: #876d3a;
+}
+
+/* mouse over link */
+a:hover {
+  color: #7d725c;
+}
+
+/* selected link */
+a:active {
+  color: #5e6f82;
+}
+
+
+.image-grid {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid #333333;
+    border-radius: 15px;
+    gap: 10px;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 calc(90% - 10px);
+    justify-content: center;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.image-container p {
+    text-align: center;
+    min-height: clamp(20px, 9vw, 60px);
+    font-size: clamp(10px, 6vw, 30px);
+}
+
+.image-box {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.info-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  padding: 40px;
+  gap: 20px;
+  background-color: #403d36efef;
+  color: #d9d0b8;
+}
+
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.close-button:hover {
+  color: #ff0000;
+}
+
+.accordion > input[type="checkbox"] {
+  position: absolute;
+  left: -100vw;
+}
+
+.accordion .content {
+  overflow-y: hidden;
+  height: 0;
+  transition: height 0.3s ease;
+  background-color: #d9d0b8;
+}
+
+.accordion > input[type="checkbox"]:checked ~ .content {
+  height: auto;
+  overflow: visible;
+}
+
+.accordion label {
+  display: block;
+}
+
+.accordion > input[type="checkbox"]:checked ~ .content {
+  padding: 15px;
+  border: 1px solid #e8e8e8;
+  border-top: 0;
+}
+
+.accordion .handle {
+  margin: 0;
+  font-size: 1.125em;
+  line-height: 1.2em;
+}
+
+.accordion label {
+  color: #d9d0b8;
+  cursor: pointer;
+  font-weight: normal;
+  padding: 15px;
+  background: #403d36;
+}
+
+.accordion label:hover,
+.accordion label:focus {
+  background: #545047;
+}
+
+.accordion .handle label:before {
+  content: "↪";
+  display: inline-block;
+  margin-right: 10px;
+  font-size: .58em;
+  line-height: 1.556em;
+  vertical-align: middle;
+}
+
+.accordion > input[type="checkbox"]:checked ~ .handle label:before {
+  content: "⤵";
+}
+
+
+@media (min-width: 400px) {
+    .image-container {
+    flex: 1 0 calc(50% - 10px);
+    }
+
+    .image-container p {
+    font-size: clamp(10px, 6vw, 22px);
+    }
+
+}
+
+
+@media (min-width: 1600px) {
+
+    .accordion {
+    max-width: 1200px;
+    }
+
+
+    .close-button {
+        opacity: 0;
+}
+
+    .image-box:hover .info-box, .info-box.active {
+        display: flex;
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    .image-grid {
+        max-width: 1000px;
+    }
+
+    .image-container {
+        flex: 1 0 calc(18% - 10px);
+    }
+
+    .image-container p {
+        font-size: clamp(10px, 2.2vw, 20px);
+        min-height: clamp(100px, 10vw, 60px);
+    }
+
+    .catbox {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .info-box {
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        height: auto;
+        pointer-events: auto;
+        z-index: initial;
+        padding: 20px;
+        margin: 20px;
+        max-width: 400px;
+        background-color: #403d36;
+        color: #d9d0b8;
+        flex-grow: 1;
+        border-radius: 15px;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+}
+
